@@ -1,0 +1,50 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SecretSound" mc:Ignorable="d"
+	x:Class="SecretSound.DWindow"
+	x:Name="Window"
+	Title="DWindow"
+	Width="510" Height="510" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" MouseMove="Window_MouseMove">
+
+	<Grid x:Name="LayoutRoot">
+		<Image Margin="0,0,10,10" Source="ImgResource/Enciphering_BG.png" Stretch="Fill"/>
+		<Button Content="Button" HorizontalAlignment="Right" Margin="0,4,16,0" Style="{DynamicResource BT_Close}" VerticalAlignment="Top" Width="18" Height="18" x:Name="BT_Close" Click="BT_Close_Click" d:LayoutOverrides="GridBox"/>
+		<Button Content="Button" Margin="0,4,37,0" Style="{DynamicResource BT_Min}" Width="18" Height="18" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="BT_Min" Click="BT_Min_Click" d:LayoutOverrides="GridBox"/>
+		<Button Content="Button" HorizontalAlignment="Left" Height="15" Margin="16,13,0,0" Style="{DynamicResource BT_Return}" VerticalAlignment="Top" Width="19" Click="Button_Click_1"/>
+		<Rectangle Fill="#11F4F4F5" HorizontalAlignment="Left" Height="19" Margin="98,154,0,0" VerticalAlignment="Top" Width="336" d:LayoutOverrides="GridBox"/>
+		<Rectangle Fill="#11F4F4F5" HorizontalAlignment="Left" Height="19" Margin="98,194,0,0" VerticalAlignment="Top" Width="336" d:LayoutOverrides="GridBox"/>
+		<TextBlock Height="24" Margin="32,152,0,0" TextWrapping="Wrap" Text="加密文件" VerticalAlignment="Top" FontSize="14" TextOptions.TextFormattingMode="Display" TextAlignment="Right" d:LayoutOverrides="GridBox" HorizontalAlignment="Left">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFF8100" Offset="0"/>
+					<GradientStop Color="#FFFFE300" Offset="1"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Height="24" Margin="5,192,0,0" TextWrapping="Wrap" Text="输出文件路径" VerticalAlignment="Top" FontSize="14" TextOptions.TextFormattingMode="Display" TextAlignment="Right" HorizontalAlignment="Left" d:LayoutOverrides="GridBox">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFF8100" Offset="0"/>
+					<GradientStop Color="#FFFFE300" Offset="1"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+        <TextBox Height="19" Margin="101.5,153,76,0" Text="{Binding FileInput_Path}" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" BorderThickness="0" x:Name="TB_FileSource" d:LayoutOverrides="GridBox" />
+		<Button Content="浏览" HorizontalAlignment="Right" Height="19" Margin="0,152.668,29.669,0" VerticalAlignment="Top" Width="34" Style="{DynamicResource BT_FilePath}" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" TextOptions.TextFormattingMode="Display" FontSize="12" Cursor="Hand" x:Name="BT_FileOutput"  d:LayoutOverrides="GridBox" Click="BT_FileInput_Click" />
+		<Button Content="浏览" HorizontalAlignment="Right" Height="19" Margin="0,192.668,29.669,0" VerticalAlignment="Top" Width="34" Style="{DynamicResource BT_FilePath}" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" TextOptions.TextFormattingMode="Display" FontSize="12" Cursor="Hand" x:Name="BT_FileOutput_Copy"  d:LayoutOverrides="GridBox" Click="BT_FileOutput_Copy_Click" />
+		<Image Grid.ColumnSpan="2" Margin="40,0,35,59" Source="ImgResource/PB_BG.png" Stretch="Fill" Grid.Row="1" Height="52" VerticalAlignment="Bottom"/>
+		<local:Rank Margin="101,234,244.001,246" x:Name="MixBitRank" />
+		<TextBlock Margin="30,242,0,244" TextWrapping="Wrap" Text="混合位数" FontSize="14" TextOptions.TextFormattingMode="Display" TextAlignment="Right" HorizontalAlignment="Left" d:LayoutOverrides="GridBox">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFF8100" Offset="0"/>
+					<GradientStop Color="#FFFFE300" Offset="1"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<Button Content="Button" Height="84" Margin="0,0,0,126" VerticalAlignment="Bottom" Width="202" HorizontalAlignment="Center" Style="{DynamicResource BT_Enc}" Click="Button_Click_2"/>
+		<ProgressBar Height="23" Margin="41.999,0,39.001,84.676" Grid.Row="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Style="{DynamicResource ProgressBarStyle1}" Foreground="#FFF54410" Value="{Binding MixPB}" Name="PB" Panel.ZIndex="1" />
+        <TextBox Height="19" Margin="101.5,193,76,0" Text="{Binding FileOutput_Path}" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" BorderThickness="0" x:Name="TB_FileSource_Copy" d:LayoutOverrides="GridBox" />
+	</Grid>
+</Window>

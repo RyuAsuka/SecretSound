@@ -1,0 +1,70 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SecretSound" mc:Ignorable="d"
+	x:Class="SecretSound.DecipheringWindow"
+	x:Name="Window"
+	Title="DecipheringWindow"
+	Width="510" Height="510" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" MouseMove="Window_MouseMove">
+
+	<Grid x:Name="LayoutRoot" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.194*"/>
+			<ColumnDefinition Width="0.806*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.322*"/>
+			<RowDefinition Height="0.678*"/>
+		</Grid.RowDefinitions>
+		<Image Margin="0" Source="ImgResource/Deciphering_BG.png" Stretch="Fill" Width="500" Height="500" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+		<Button x:Name="BT_Return" Content="Button" HorizontalAlignment="Left" Height="15" Margin="12,14,0,0" Style="{DynamicResource BT_Return}" VerticalAlignment="Top" Width="19" Click="BT_Return_Click"/>
+		<TextBlock Height="24" Margin="0,31,0,0" TextWrapping="Wrap" Text="待加密文件" VerticalAlignment="Top" FontSize="14" TextOptions.TextFormattingMode="Display" Grid.Row="1" TextAlignment="Right" HorizontalAlignment="Right">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFF8100" Offset="0"/>
+					<GradientStop Color="#FFFFE300" Offset="1"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Height="24" Margin="0,63,0,0" TextWrapping="Wrap" Text="输出文件" VerticalAlignment="Top" FontSize="14" TextOptions.TextFormattingMode="Display" Grid.Row="1" TextAlignment="Right" HorizontalAlignment="Right">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFF8100" Offset="0"/>
+					<GradientStop Color="#FFFFE300" Offset="1"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Height="24" Margin="31,106,0,0" TextWrapping="Wrap" Text="混合位数" VerticalAlignment="Top" FontSize="14" TextOptions.TextFormattingMode="Display" Grid.Row="1" TextAlignment="Right">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFF8100" Offset="0"/>
+					<GradientStop Color="#FFFFE300" Offset="1"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Height="24" Margin="0,-1,0,0" TextWrapping="Wrap" Text="原音频文件" VerticalAlignment="Top" FontSize="14" TextOptions.TextFormattingMode="Display" Grid.Row="1" TextAlignment="Right" HorizontalAlignment="Right">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFFF8100" Offset="0"/>
+					<GradientStop Color="#FFFFE300" Offset="1"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<Rectangle Grid.Column="1" Fill="#11F4F4F5" HorizontalAlignment="Left" Height="19" Margin="11,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="336"/>
+		<Rectangle Grid.Column="1" Fill="#11F4F4F5" HorizontalAlignment="Left" Height="19" Margin="10,34,0,0" Grid.Row="1" VerticalAlignment="Top" Width="336"/>
+		<Rectangle Grid.Column="1" Fill="#11F4F4F5" HorizontalAlignment="Left" Height="19" Margin="11,65,0,0" Grid.Row="1" VerticalAlignment="Top" Width="336"/>
+		<local:Rank Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="13,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164.999" x:Name="MixBitRank" />
+        <TextBox Grid.Column="1" Height="19" Margin="11.5,2,56,0" Grid.Row="1" Text="{Binding FileSource_Path}" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" BorderThickness="0" x:Name="TB_FileSource" />
+		<Button Content="Button" Grid.Column="1" HorizontalAlignment="Right" Margin="0,1,1,143.663" Style="{DynamicResource BT_Close}" VerticalAlignment="Top" Width="18" Height="18" x:Name="BT_Close" Click="BT_Close_Click"/>
+		<Button Content="Button" Grid.Column="1" Margin="0,1,22,143.003" Style="{DynamicResource BT_Min}" Width="18" Height="18" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="BT_Min" Click="BT_Min_Click"/>
+        <TextBox Grid.Column="1" Height="19" Margin="11.5,35.335,56,0" Grid.Row="1" Text="{Binding FileInput_Path}" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" BorderThickness="0" x:Name="TB_FileInput" />
+        <TextBox Grid.Column="1" Height="19" Margin="11.5,64.001,56,0" Grid.Row="1" Text="{Binding FileOutput_Path}" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" BorderThickness="0" x:Name="TB_FileOntput" />
+		<ProgressBar Height="23" Margin="41.999,0,39.001,84.676" Grid.Row="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Style="{DynamicResource ProgressBarStyle1}" Foreground="#FFF54410" Value="{Binding MixPB}" Name="PB" Panel.ZIndex="1" />
+		<Button Content="加密" Grid.Column="1" Margin="60.163,131.664,140.836,123.335" Grid.Row="1" Style="{DynamicResource BT_Work_Dec}" Click="Button_Click" Background="#B2EDD300" Width="202" Height="84" d:LayoutOverrides="VerticalMargin" Cursor="Hand" />
+		<Button Content="浏览" Grid.Column="1" HorizontalAlignment="Right" Height="19" Margin="0,0.666,12.669,0" Grid.Row="1" VerticalAlignment="Top" Width="34" Style="{DynamicResource BT_FilePath}" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" TextOptions.TextFormattingMode="Display" FontSize="12" Cursor="Hand" x:Name="BT_FileSource" Click="BT_FileSource_Click" />
+		<Button Content="浏览" Grid.Column="1" HorizontalAlignment="Right" Height="19" Margin="0,32.667,12.669,0" Grid.Row="1" VerticalAlignment="Top" Width="34" Style="{DynamicResource BT_FilePath}" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" TextOptions.TextFormattingMode="Display" FontSize="12" Cursor="Hand" x:Name="BT_FileInput" Click="BT_FileInput_Click" />
+		<Button Content="浏览" Grid.Column="1" HorizontalAlignment="Right" Height="19" Margin="0,64.668,12.669,0" Grid.Row="1" VerticalAlignment="Top" Width="34" Style="{DynamicResource BT_FilePath}" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" TextOptions.TextFormattingMode="Display" FontSize="12" Cursor="Hand" x:Name="BT_FileOutput" Click="BT_FileOutput_Click" />
+		<Image Grid.ColumnSpan="2" Margin="40,0,35,59" Source="ImgResource/PB_BG.png" Stretch="Fill" Grid.Row="1" Height="52" VerticalAlignment="Bottom"/>
+		
+	</Grid>
+</Window>
